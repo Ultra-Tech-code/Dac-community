@@ -134,7 +134,7 @@ console.log(`getAllMembersTx   to ${getAllMembersTx}`);
 
 
 /////AyaCommunity interction [getMember]
-const getMemberTx = await AyaCommunityInteract.connect(member2).getMember(member2.address);
+const getMemberTx = await AyaCommunityInteract.connect(member2).getMemberDetails(member2.address);
 console.log(`getMemberTx   to ${getMemberTx}`);
 
 /////AyaCommunity interction [changeProposalState]

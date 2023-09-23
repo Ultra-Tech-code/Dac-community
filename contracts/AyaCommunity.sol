@@ -162,7 +162,7 @@ contract AyaCommunity is Ownable {
                 member.ayaMembershipTokensOwned = ayaMembershipToken.balanceOf(msg.sender);
             }
         else if (ayaMembershipToken.balanceOf(msg.sender) >= 4000*1e18) {
-            member.tier = MembershipTier.Gold;
+            member.tier = MembershipTier.Diamond;
             member.ayaMembershipTokensOwned = ayaMembershipToken.balanceOf(msg.sender);
         }
         
@@ -266,7 +266,7 @@ function changeProposalState(uint256 _proposalId, bool propoalState) external on
 
 
 function Donate(uint256 _amount) external validAmount(_amount){
-    ayaMembershipToken.transferFrom(msg.sender, address(this), _amount);
+    ayaToken.transferFrom(msg.sender, address(this), _amount);
     emit Donation(msg.sender, _amount, block.timestamp);
 }
 
@@ -303,7 +303,7 @@ function membershipLevel(address _memberAddress) public view returns(uint256){
     return voteweigth;
 }
 
-function getMember(address _memberAddress) public view returns (Member memory) {
+function getMemberDetails(address _memberAddress) public view returns (Member memory) {
     for (uint256 i = 0; i <= members.length; i++) {
         if (members[i].memberAddress == _memberAddress) {
             return members[i];}
